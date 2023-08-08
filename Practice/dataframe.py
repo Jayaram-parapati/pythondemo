@@ -10,7 +10,7 @@ page_table=sample_db["page_table"]
 #print(type(page_table))
 verified_bills_list=verified_bills.find()
 for x in verified_bills_list:
-    print(x["_id"])
+    print(x["_id"],x["payload"]["InvoiceNumber"])
     
 
 
