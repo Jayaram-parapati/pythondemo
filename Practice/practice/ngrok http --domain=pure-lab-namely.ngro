@@ -1,0 +1,1 @@
+ngrok http --domain=pure-lab-namely.ngrok-free.app 5500
