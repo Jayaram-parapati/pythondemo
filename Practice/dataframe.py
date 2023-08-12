@@ -2,17 +2,27 @@ import pymongo
 import pandas as pd
 
 client=pymongo.MongoClient("mongodb://localhost:27017")
-sample_db=client["sample_db"]
-verified_bills=sample_db["verified_bills"]
-page_table=sample_db["page_table"]
-#print(page_table.find_one())
-#print(verified_bills.find_one())
-#print(type(page_table))
-verified_bills_list=verified_bills.find()
-for x in verified_bills_list:
-    print(x["_id"],x["payload"]["InvoiceNumber"])
-    
+db=client["sample_db"]
 
+verified_bills = db.verified_bills.find({})
 
+date = []
+amount = []
+invoice = []
+vendor = []
 
+for obj in verified_bills:
+    if "Date" in obj['payload'].keys():
+        print("date","true")
+    else:
+        print(obj)
+        # obj['payload']['Date'] = 
+        
+    # print(obj['payload']['Date'])
+    # date.append(obj['payload']['Date'])
+    # amount.append(obj['payload']['Amount'])
+    # invoice.append(obj['payload']['InvoiceNumber'])
+    # vendor.append(obj['payload']['vendor'])
 
+print(date)
+        
