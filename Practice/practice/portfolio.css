@@ -69,7 +69,7 @@ p {
     box-sizing: border-box;
     cursor: pointer;
     margin: 10px 15px;
-    background-image: url(/images/download.jpg);
+    background-image: url(/Practice/images/download.jpg);
     background-position: center;
     background-size: cover;
     
@@ -84,7 +84,7 @@ p {
     box-sizing: border-box;
     cursor: pointer;
     margin: 10px 15px;
-    background-image: url(/images/hqdefault.jpg);
+    background-image: url(/Practice/images/hqdefault.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -97,7 +97,7 @@ p {
     box-sizing: border-box;
     cursor: pointer;
     margin: 10px 15px;
-    background-image: url(/images/RAJAHAMUNDRY.jpg);
+    background-image: url(/Practice/images/RAJAHAMUNDRY.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -110,7 +110,7 @@ p {
     box-sizing: border-box;
     cursor: pointer;
     margin: 10px 15px;
-    background-image: url(/images/nellore.jpg);
+    background-image: url(/Practice/images/nellore.jpg);
     background-position: center;
     background-size: cover;
 }  
