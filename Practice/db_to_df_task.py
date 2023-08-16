@@ -40,7 +40,7 @@ for obj in verified_bills:
             if start_index != -1:
                 final_text.append(search_string)
                 # db.final_table.update_one({"text":search_string},{"$set":{"entities":[start_index, end_index, "InvoiceNumber"]}})
-                print(f"InvoiceNumber {start_index} to {end_index-1}")
+                # print(f"InvoiceNumber {start_index} to {end_index-1}")
 
         if 'Amount' in obj['payload']:
             search_string = obj["payload"]["Amount"]
@@ -50,7 +50,7 @@ for obj in verified_bills:
             if start_index != -1:
                 final_text.append(search_string)
                 # db.final_table.update_one({"text":search_string},{"$set":{"entities":[start_index, end_index, "Amount"]}})
-                print(f"Amount, {start_index} to {end_index-1}")
+                # print(f"Amount, {start_index} to {end_index-1}")
 
         if 'vendor' in obj['payload']:
             search_string = obj["payload"]["vendor"]
@@ -60,7 +60,7 @@ for obj in verified_bills:
             if start_index != -1:
                 final_text.append(search_string)
                 # db.final_table.update_one({"text":search_string},{"$set":{"entities":[start_index, end_index, "vendor"]}})
-                print(f"Vendor {start_index} to {end_index-1}")
+                 # print(f"Vendor {start_index} to {end_index-1}")
 
         print('----------------------------------------')
 
