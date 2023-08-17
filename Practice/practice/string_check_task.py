@@ -15,7 +15,7 @@
 # search_list = person.values()
 
 # for x in search_list:
-#   for m in re.finditer(x,story):
+#   for m in find(x,story):
 #     list = [x,m.start(),(m.end()-1)]
 #     final_list.append(list)
 
@@ -33,13 +33,24 @@ person = {
 search_list = person.values()
 final_list = []
 
-def check(sub_str):
-    for x in range(len(story)):
-        if story.startswith(sub_str,x):
-            return [x , (x+(len(sub_str)-1)),sub_str]
+def check(sub_str,story):
+    # for x in range(len(story)):
+    #     if story.startswith(sub_str,x): 
+    #       return [x,((x)+len(sub_str)-1),sub_str]
 
 
-for x in search_list:
-    final_list.append((check(x)))
-    
+      index = [index for index in range(len(story)) if story.startswith(sub_str, index)]
+      if len(index) > 1:
+          new_lists = [[x,len(sub_str)-1+x,sub_str] for x in index]
+          return new_lists
+      else:
+          for x in index:
+            y = [x,len(sub_str)-1+x,sub_str]
+          return y
+
+for sub_str in search_list:
+  c = check(sub_str,story)
+  final_list.append(c)
+
 print(final_list)
+  
