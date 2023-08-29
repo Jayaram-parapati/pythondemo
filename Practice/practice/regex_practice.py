@@ -44,6 +44,7 @@ print(re.findall("he.+o","helllllllo world")) #one or more occurance
 print(re.findall("he.?o","hello world")) #zero or one occurance
 print(re.findall("he.?o","helo world"))
 print(re.findall("he.{6}o","hellllllo world")) #exact no of occurances mentioned {6}
+print(re.findall("INDIA|PAKISTAN","there is a match between INDIA and AUSTRALIA tonight.")) #gives either one or Two matched values
 
 
 
