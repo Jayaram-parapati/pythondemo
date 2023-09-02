@@ -1,6 +1,7 @@
 import PyPDF2
 import glob
-import requests
+import requests,re,os
+import pandas as pd
 
 def pdf_to_text(pdf_path):
     with open(pdf_path, 'rb') as pdf_file:
@@ -11,41 +12,77 @@ def pdf_to_text(pdf_path):
             text += page.extract_text()
     return text
 
-def send_to_label_studio(text):
+# def send_to_label_studio(text):
  
-    user_id = '71eb6ea415a611e6d2a093acb600132af0a05fa7'
-    url = ''
-    headers ={
-        "Authorization":f"Bearer {user_id}",
-        "contenttype": "application/json"
-    }
+#     user_id = '71eb6ea415a611e6d2a093acb600132af0a05fa7'
+#     url = ''
+#     headers ={
+#         "Authorization":f"Bearer {user_id}",
+#         "contenttype": "application/json"
+#     }
 
-    response = requests.post(url,headers=headers)
-    return response.json()
+#     response = requests.post(url,headers=headers)
+#     return response.json()
+
+df = pd.DataFrame(columns=["resumes_text"])
 
 pdf_files = glob.glob('c:\\Users\\anand.adapa\\Desktop\\resumes 50\\*.pdf')
 
 for pdf_path in pdf_files:
     extracted_text = pdf_to_text(pdf_path)
-    response = send_to_label_studio(extracted_text)
-    print(response.status_code)
+    # response = send_to_label_studio(extracted_text)
+    # print(response.status_code)
+    # print(extracted_text)
+    formatted_text = re.sub(r'\s+|[^a-zA-Z0-9]',' ',extracted_text)
+    formatted_text = re.sub(r'\s+',' ',formatted_text)
+    # print(formatted_text)
 
-
-
-
-
-
-
-
-
-
-    #     # Get the name of the PDF file (without the extension)
-    # pdf_filename = pdf_path.split('/')[-1].split('.')[0]
-    # print(pdf_path)
-    # print(pdf_filename)
-    # # Create a new text file and save the extracted text
-    # # text_file_path = f'path_to_text_output/{pdf_filename}.txt'
-    # # with open(text_file_path, 'w') as text_file:
-    # #     text_file.write(extracted_text)
+    text_filename = pdf_path.split('.')[1].split('\\')[-1] + ".text"
+    # print(text_filename)
+    text_file_path = os.path.join("c:\\Users\\anand.adapa\\Desktop\\text 50",text_filename)
+    # print(text_file_path)
     
-    # # print(f"Text from {pdf_path} saved to {text_file_path}")
+    with open(text_file_path,'w',encoding='utf-8') as text_file:
+        text_file.write(formatted_text)
+
+    # df = df.append({"resumes_text" : formatted_text}, ignore_index = True)
+    df    
+
+print(df.to_string())
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
